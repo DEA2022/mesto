@@ -1,3 +1,5 @@
+@import url(../vendor/fonts/fonts.css);
+
 .root {
   background-color: #000;
 }
@@ -30,4 +32,65 @@
 
 .header__logo {
   max-width: 142px;
+}
+
+.profile {
+  max-width: 880px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page__profile {
+  margin: 0 auto 50px;
+}
+
+.profile__photo {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+}
+
+.profile__wrapper {
+  display: flex;
+}
+
+.profile__common {
+  max-width: 336px;
+  padding-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.profile__title {
+  margin: 0;
+  padding-right: 18px;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+}
+
+.profile__subtitle {
+  margin: 16px 0 0 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+.profile__edit {
+  display: block;
+}
+
+.form {
+
+}
+.form__button {
+  background-color: #000;
+  border: 0;
+  padding: 0;
+}
+
+.button__img {
+  max-width: 150px;
 }

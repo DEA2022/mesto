@@ -9,13 +9,26 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Место</title>
 </head>
+
 <body class="root">
   <div class="page">
     <header class="header page__header">
       <img class="header__logo" src="./images/logo.svg" alt="Место - Россия">
     </header>
-    <section class="profile">
-
+    <section class="profile page__profile">
+      <div class="profile__wrapper">
+        <img class="profile__photo" src="./images/avatar.jpg" alt="Фото Жак-Ив Кусто">
+        <div class="profile__common">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <img src="./images/EditButton.svg" alt="карандаш" class="profile__edit">
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <form class="form">
+        <button class="form__button">
+          <img src="./images/button.svg" alt="крестик" class="button__img">
+        </button>
+      </form>
     </section>
     <section class="photo">
 
@@ -26,4 +39,5 @@
   </div>
   <script src="./index.js"></script>
 </body>
+
 </html>
