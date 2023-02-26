@@ -1,0 +1,33 @@
+.root {
+  background-color: #000;
+}
+
+.page {
+  max-width: 1280px;
+  min-width: 320px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  margin: 0 auto;
+  color: #FFFFFF;
+}
+
+.header {
+  max-width: 880px;
+  min-height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+.page__header {
+  margin: 45px auto 40px;
+}
+
+.header__logo {
+  max-width: 142px;
+}
