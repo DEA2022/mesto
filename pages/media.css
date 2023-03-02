@@ -1,0 +1,121 @@
+@media (max-width: 690px) {
+  .header {
+    min-height: 56px;
+  }
+
+  .page__header {
+    margin: 28px 0 42px;
+  }
+
+  .header__logo {
+    max-width: 103.74px;
+    padding-left: 27px;
+  }
+
+  .profile {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .profile__subtitle {
+    margin: 7px 0 33px 0;
+  }
+
+  .profile__button {
+    max-width: 282px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .popup__container {
+    max-width: 282px;
+    min-height: 322px;
+  }
+
+  .form__info {
+    max-width: 238px;
+  }
+
+  .form__title {
+    font-size: 18px;
+    padding: 25px 0 75px;
+  }
+
+  .form__job-title {
+    margin-bottom: 45px;
+  }
+
+  .form__submit {
+    max-width: 238px;
+    min-height: 46px;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .form__close {
+   width: 20px;
+   height: 20px;
+   background-size: 100%;
+   top: -11%;
+   right: 0;
+   transform: translate(-11%, 0);
+  }
+}
+
+@media (max-width: 502px) {
+
+  .main__profile {
+    margin: 0 auto 36px;
+  }
+
+  .profile__wrapper {
+    max-width: 282px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile__common {
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .profile__photo {
+    margin-bottom: 26px;
+  }
+
+  .profile__title {
+    font-size: 27px;
+    line-height: 1.22;
+    padding: 0 10px 0 30px;
+  }
+
+  .profile__subtitle {
+    font-size: 14px;
+  }
+
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__button {
+    background-size: 16px 16px;
+  }
+
+  .page__photo {
+    margin: 0 auto 48px;
+  }
+
+  .footer {
+    max-width: 282px;
+  }
+
+  .footer__copiright {
+    font-size: 14px;
+  }
+
+  .page__footer {
+    margin: 0 auto 36px;
+  }
+}

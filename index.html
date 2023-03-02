@@ -1,43 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./pages/media.css">
   <title>Проект Место</title>
 </head>
-
 <body class="root">
   <div class="page">
     <header class="header page__header">
       <img class="header__logo" src="./images/logo.svg" alt="Место - Россия">
     </header>
-    <section class="profile page__profile">
-      <div class="profile__wrapper">
-        <img class="profile__photo" src="./images/avatar.jpg" alt="Фото Жак-Ив Кусто">
-        <div class="profile__common">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <img src="./images/EditButton.svg" alt="карандаш" class="profile__edit">
-          <p class="profile__subtitle">Исследователь океана</p>
+    <main class="main">
+      <section class="profile main__profile">
+        <div class="profile__wrapper">
+          <img class="profile__photo" src="./images/avatar.jpg" alt="Фото Жак-Ив Кусто">
+          <div class="profile__common">
+            <h1 class="profile__title">
+              Жак-Ив Кусто
+            </h1>
+            <button class="profile__edit" type="button">
+
+            </button>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
         </div>
-      </div>
-      <form class="form">
-        <button class="form__button">
-          <img src="./images/button.svg" alt="крестик" class="button__img">
+        <button class="profile__button">
+
         </button>
-      </form>
-    </section>
-    <section class="photo">
+      </section>
+      <section class="photo page__photo">
+        <ul class="photo__grid">
+          <li class="photo__card">
+            <img src="./images/london.jpg" alt="Биг-Бэн" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Лондон</p>
+              <button class="photo-icon">
 
-    </section>
-    <footer class="footer">
+              </button>
+            </div>
+          </li>
+          <li class="photo__card">
+            <img src="./images/india.jpg" alt="Дворец Тадж-Махал" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Тадж-Махал</p>
+              <button class="photo-icon">
 
+              </button>
+            </div>
+          </li>
+          <li class="photo__card">
+            <img src="./images/egipt.jpg" alt="Пирамиды и сфинкс" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Египет</p>
+              <button class="photo-icon">
+
+              </button>
+            </div>
+          </li>
+          <li class="photo__card">
+            <img src="./images/elbrus.png" alt="" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Гора Эльбрус</p>
+              <button class="photo-icon">
+
+              </button>
+            </div>
+          </li>
+          <li class="photo__card">
+            <img src="./images/dombay.png" alt="" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Домбай</p>
+              <button class="photo-icon">
+
+              </button>
+            </div>
+          </li>
+          <li class="photo__card">
+            <img src="./images/karachaevsk.png" alt="" class="photo__item">
+            <div class="photo__wrap">
+              <p class="photo__name">Карачаево-Черкесская Республика</p>
+              <button class="photo-icon">
+
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer page__footer">
+      <p class="footer__copiright">&copy; 2023 Mesto Russia</p>
     </footer>
+    <!-- popap -->
+    <div class="popup">
+      <div class="popup__container">
+        <form action="#" class="form">
+          <fieldset class="form__info">
+            <legend class="form__title">
+              Редактировать профиль
+            </legend>
+            <input type="text" class="form__username" value="Жак-Ив Кусто" required>
+            <input type="text" class="form__job-title" value="Исследователь океана" required>
+          </fieldset>
+          <button class="form__submit" type="submit">
+            Сохранить
+          </button>
+          <div class="form__close">
+
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <script src="./index.js"></script>
 </body>
-
 </html>
