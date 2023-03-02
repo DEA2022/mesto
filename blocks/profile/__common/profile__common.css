@@ -1,0 +1,13 @@
+.profile__common {
+  max-width: 336px;
+  padding-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 502px) {
+  .profile__common {
+    justify-content: center;
+    padding-left: 0;
+  }
+}

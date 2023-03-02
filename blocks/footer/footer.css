@@ -1,0 +1,9 @@
+.footer {
+  max-width: 880px;
+}
+
+@media (max-width: 502px) {
+  .footer {
+    max-width: 282px;
+  }
+}
