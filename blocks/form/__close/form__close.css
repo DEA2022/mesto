@@ -3,11 +3,12 @@
   height: 32px;
   background-image: url(../../../images/closeicon.svg);
   background-repeat: no-repeat;
+  background-color: #000000;
+  background-position: 50%;
   position: fixed;
   top: -10%;
   right: -10%;
   transform: translate(-10%, -10%);
-  z-index: 10;
 }
 
 .form__close:hover {
