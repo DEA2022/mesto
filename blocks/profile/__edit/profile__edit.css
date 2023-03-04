@@ -23,5 +23,6 @@
     width: 18px;
     height: 18px;
     background-size: 7.5px 7.5px;
+    transform: translate(10px, 0);
   }
 }
