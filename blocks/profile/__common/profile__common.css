@@ -7,6 +7,7 @@
 
 @media (max-width: 502px) {
   .profile__common {
+    max-width: 282px;
     justify-content: center;
     padding-left: 0;
   }

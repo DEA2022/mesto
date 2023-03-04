@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Место</title>
 </head>
+
 <body class="root">
   <div class="page">
     <header class="header page__header">
@@ -35,8 +37,8 @@
           <li class="photo__card">
             <img src="./images/london.jpg" alt="Биг-Бэн" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Лондон</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Лондон</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
@@ -44,8 +46,8 @@
           <li class="photo__card">
             <img src="./images/india.jpg" alt="Дворец Тадж-Махал" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Тадж-Махал</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Тадж-Махал</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
@@ -53,35 +55,35 @@
           <li class="photo__card">
             <img src="./images/egipt.jpg" alt="Пирамиды и сфинкс" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Египет</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Египет</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
           </li>
           <li class="photo__card">
-            <img src="./images/elbrus.png" alt="" class="photo__item">
+            <img src="./images/elbrus.png" alt="поля на переднем плане, гора на горизонте" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Гора Эльбрус</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Гора Эльбрус</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
           </li>
           <li class="photo__card">
-            <img src="./images/dombay.png" alt="" class="photo__item">
+            <img src="./images/dombay.png" alt="Снежные горы и ели, растущие на горе" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Домбай</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Домбай</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
           </li>
           <li class="photo__card">
-            <img src="./images/karachaevsk.png" alt="" class="photo__item">
+            <img src="./images/karachaevsk.png" alt="Сентинский храм" class="photo__item">
             <div class="photo__wrap">
-              <p class="photo__name">Карачаево-Черкесская Республика</p>
-              <button class="photo__icon">
+              <h2 class="photo__name">Карачаево-Черкесская Республика</h2>
+              <button class="photo__icon" type="button">
 
               </button>
             </div>
@@ -95,24 +97,25 @@
     <!-- popap -->
     <div class="popup">
       <div class="popup__container">
-        <form action="#" class="form">
+        <form action="#" class="form" name="Профиль">
           <fieldset class="form__info">
             <h2 class="form__title">
               Редактировать профиль
             </h2>
-            <input type="text" class="form__username" value="Жак-Ив Кусто" placeholder="имя" required>
-            <input type="text" class="form__job-title" value="Исследователь океана" placeholder="о себе" required>
+            <input type="text" class="form__field" placeholder="Введите имя" required>
+            <input type="text" class="form__field form__field_type_indent" placeholder="Введите информацию о себе" required>
           </fieldset>
           <button class="form__submit" type="submit">
             Сохранить
           </button>
-          <button class="form__close" type="button">
-
-          </button>
         </form>
+        <button class="popup__close" type="button">
+
+        </button>
       </div>
     </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>
+
 </html>

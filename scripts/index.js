@@ -1,7 +1,7 @@
 // открытие и закрытие попапа
 const popupElement = document.querySelector('.popup');
 const popupOpenBtnElement = document.querySelector('.profile__edit');
-const popupCloseBtnElement = popupElement.querySelector('.form__close');
+const popupCloseBtnElement = popupElement.querySelector('.popup__close');
 
 const openPopup = function () {
   popupElement.classList.add('popup_opened');
@@ -24,8 +24,8 @@ popupElement.addEventListener('click', closePopupByClickOverlay);
 
 // редактирование формы
 const formElement = document.querySelector('.form');
-let nameInput = formElement.querySelector('.form__username');
-let jobInput = formElement.querySelector('.form__job-title');
+let nameInput = formElement.querySelector('.form__field');
+let jobInput = formElement.querySelector('.form__field');
 
 const handleFormSubmit = function (evt) {
   evt.preventDefault();

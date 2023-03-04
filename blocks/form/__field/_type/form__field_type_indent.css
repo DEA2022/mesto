@@ -1,0 +1,5 @@
+@media (max-width: 690px) {
+  .form__field_type_indent {
+    margin-bottom: 45px;
+  }
+}

@@ -32,9 +32,9 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__info/form__info.css);
 @import url(../blocks/form/__title/form__title.css);
-@import url(../blocks/form/__username/form__username.css);
-@import url(../blocks/form/__job-title/form__job-title.css);
+@import url(../blocks/form/__field/form__field.css);
+@import url(../blocks/form/__field/_type/form__field_type_indent.css);
 @import url(../blocks/form/__submit/form__submit.css);
-@import url(../blocks/form/__close/form__close.css);
+@import url(../blocks/popup/__close/popup__close.css);
 
 
