@@ -13,6 +13,6 @@
   cursor: pointer;
 }
 
-.photo__icon:active {
+.photo__icon_active {
   background-image: url(../../../images/blackheart.svg);
 }

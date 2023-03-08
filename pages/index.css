@@ -48,3 +48,12 @@
   width: 18px;
   height: 19px;
 }
+
+.photo__trash:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.form__field_type_indent-bottom {
+  margin-bottom: 30px;
+}
