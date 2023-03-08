@@ -40,4 +40,11 @@
 @import url(../blocks/form/__submit/form__submit.css);
 @import url(../blocks/popup/__close/popup__close.css);
 
-
+.photo__trash {
+  background-image: url(../images/trash.svg);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+}
