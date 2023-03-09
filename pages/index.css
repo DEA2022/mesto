@@ -42,6 +42,8 @@
 
 .photo__trash {
   background-image: url(../images/trash.svg);
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
   position: absolute;
   top: 20px;
   right: 20px;
