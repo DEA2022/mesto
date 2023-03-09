@@ -1,5 +1,6 @@
 .photo__card {
   max-width: 282px;
+  width: 100%;
   background-color: #FFFFFF;
   color: #000000;
   border-radius: 10px;

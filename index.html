@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Место</title>
 </head>
+
 <body class="root">
   <div class="page">
     <header class="header page__header">
@@ -32,78 +34,7 @@
       </section>
       <section class="photo page__photo" aria-label="Фото посещенных мест">
         <ul class="photo__grid">
-          <li class="photo__card">
-            <img src="./images/london.jpg" alt="Биг-Бэн" class="photo__item">
-            <button class="photo__trash" type="button">
 
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Лондон</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
-          <li class="photo__card">
-            <img src="./images/india.jpg" alt="Дворец Тадж-Махал" class="photo__item">
-            <button class="photo__trash" type="button">
-
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Тадж-Махал</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
-          <li class="photo__card">
-            <img src="./images/egipt.jpg" alt="Пирамиды и сфинкс" class="photo__item">
-            <button class="photo__trash" type="button">
-
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Египет</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
-          <li class="photo__card">
-            <img src="./images/elbrus.png" alt="поля на переднем плане, гора на горизонте" class="photo__item">
-            <button class="photo__trash" type="button">
-
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Гора Эльбрус</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
-          <li class="photo__card">
-            <img src="./images/dombay.png" alt="Снежные горы и ели, растущие на горе" class="photo__item">
-            <button class="photo__trash" type="button">
-
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Домбай</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
-          <li class="photo__card">
-            <img src="./images/karachaevsk.png" alt="Сентинский храм" class="photo__item">
-            <button class="photo__trash" type="button">
-
-            </button>
-            <div class="photo__wrap">
-              <h2 class="photo__name">Карачаево-Черкесская Республика</h2>
-              <button class="photo__icon" type="button">
-
-              </button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -135,7 +66,8 @@
         <form action="#" class="form" name="Добавление карточки">
           <fieldset class="form__info">
             <h2 class="form__title">Новое место</h2>
-            <input type="text" class="form__field form__field_type_indent-bottom form__field_el_place" placeholder="Название" required>
+            <input type="text" class="form__field form__field_type_indent-bottom form__field_el_place"
+              placeholder="Название" required>
             <input type="text" class="form__field form__field_type_indent form__field_el_webcite"
               placeholder="Ссылка на картинку" required>
           </fieldset>
@@ -148,8 +80,19 @@
         </button>
       </div>
     </div>
-    <template id="card">
+    <template class="card">
+      <li class="photo__card">
+        <img src="#" alt="#" class="photo__item">
+        <button class="photo__trash" type="button">
 
+        </button>
+        <div class="photo__wrap">
+          <h2 class="photo__name"></h2>
+          <button class="photo__icon" type="button">
+
+          </button>
+        </div>
+      </li>
     </template>
   </div>
   <script src="./scripts/index.js"></script>
