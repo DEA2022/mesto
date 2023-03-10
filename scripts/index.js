@@ -4,7 +4,7 @@ const popupOpenBtnElement = document.querySelector('.profile__edit');
 const popupOpenForAddImgBtnElement = document.querySelector('.profile__button');
 const popupCloseBtnElement = popupElement.querySelector('.popup__close');
 const popupCloseForAddImgBtnElement = document.querySelector('.popup__close_add_img');
-const formElement = document.querySelector('.form');
+const formElement = popupElement.querySelector('.form');
 const formElementForAddCard = popupElementForAddImg.querySelector('.form');
 let nameInput = formElement.querySelector('.form__field_el_name');
 let jobInput = formElement.querySelector('.form__field_el_job');
@@ -56,8 +56,8 @@ initialCards.forEach(function (item) {
   photoCard.append(cardElement);
 });
 
-let nameOfCard = document.querySelector('.photo__name');
-let srcOfCard = document.querySelector('.photo__item').src;
+let nameOfCard = photoCard.querySelector('.photo__name');
+let srcOfCard = photoCard.querySelector('.photo__item').src;
 let nameOfCardField = document.querySelector('.form__field_el_place');
 let srcOfCardField = document.querySelector('.form__field_el_webcite');
 
