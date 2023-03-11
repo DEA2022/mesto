@@ -46,20 +46,36 @@ const initialCards = [
 const cardTemplate = document.querySelector('.card').content;
 const photoCard = document.querySelector('.photo__grid');
 
-
-initialCards.forEach(function (item) {
+const createNewCard = function (name, link, alt) {
   const cardElement = cardTemplate.querySelector('.photo__card').cloneNode(true);
-  cardElement.querySelector('.photo__item').src = item.link;
-  cardElement.querySelector('.photo__item').alt = item.alt;
-  cardElement.querySelector('.photo__name').textContent = item.name;
+  cardElement.querySelector('.photo__name').textContent = name;
+  cardElement.querySelector('.photo__item').src = link;
+  if (alt) {
+    cardElement.querySelector('.photo__item').alt = alt;
+  }
+  //лайк
+  cardElement.querySelector('.photo__icon').addEventListener('click', function makeLike(evt) {
+    evt.target.classList.toggle('photo__icon_active');
+  });
+  // удаление элемента
+
+  cardElement.querySelector('.photo__trash').addEventListener('click', function () {
+    cardElement.remove();
+  });
 
   photoCard.append(cardElement);
+
+  return cardElement;
+};
+
+initialCards.forEach(function (item) {
+  const cardElement = createNewCard(item.name, item.link, item.alt);
 });
 
 let nameOfCard = photoCard.querySelector('.photo__name');
 let srcOfCard = photoCard.querySelector('.photo__item').src;
-let nameOfCardField = document.querySelector('.form__field_el_place');
-let srcOfCardField = document.querySelector('.form__field_el_webcite');
+let nameOfCardField = formElementForAddCard.querySelector('.form__field_el_place');
+let srcOfCardField = formElementForAddCard.querySelector('.form__field_el_webcite');
 
 const openPopup = function () {
   nameInput.value = nameInputNewValue.textContent;
@@ -93,7 +109,7 @@ popupElement.addEventListener('click', closePopupByClickOverlay);
 popupOpenForAddImgBtnElement.addEventListener('click', openPopupForAddImg);
 popupCloseForAddImgBtnElement.addEventListener('click', closePopupForAddImg);
 popupElementForAddImg.addEventListener('click', closePopupByClickOverlay);
-
+// сабмит на отправку формы
 const handleFormSubmit = function (evt) {
   evt.preventDefault();
   nameInputNewValue.textContent = nameInput.value;
@@ -103,12 +119,12 @@ const handleFormSubmit = function (evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
+//сабмит на добавление новой карточки
 const addNewCardFormSubmit = function (evt) {
   evt.preventDefault();
-  const cardElement = cardTemplate.querySelector('.photo__card').cloneNode(true);
-  cardElement.querySelector('.photo__name').textContent = nameOfCardField.value;
-  cardElement.querySelector('.photo__item').src = srcOfCardField.value;
+  const cardElement = createNewCard(nameOfCardField.value, srcOfCardField.value);
   photoCard.prepend(cardElement);
+  evt.target.reset();
   closePopupForAddImg();
 };
 

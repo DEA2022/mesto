@@ -12,7 +12,3 @@
   opacity: 0.5;
   cursor: pointer;
 }
-
-.photo__icon_active {
-  background-image: url(../../../images/blackheart.svg);
-}

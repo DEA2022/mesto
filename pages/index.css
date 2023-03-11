@@ -24,6 +24,7 @@
 @import url(../blocks/photo/__name/photo__name.css);
 @import url(../blocks/photo/__item/photo__item.css);
 @import url(../blocks/photo/__icon/photo__icon.css);
+@import url(../blocks/photo/__icon/_active/photo__icon_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/footer/__copiright/footer__copiright.css);
@@ -59,3 +60,4 @@
 .form__field_type_indent-bottom {
   margin-bottom: 30px;
 }
+
