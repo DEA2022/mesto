@@ -61,3 +61,43 @@
   margin-bottom: 30px;
 }
 
+.popup__figure {
+  margin: 0;
+}
+
+
+.popup__img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.popup__img {
+max-height: 75vh;
+height: 100%;
+width: 100%;
+max-width: 75vw;
+margin-bottom: 10px;
+}
+
+.popup__caption {
+  font-size: 12px;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.popup__close_el_pic {
+  position: absolute;
+  top: -38px;
+  right: -45px;
+
+}
+
+@media (max-width: 690px) {
+  .popup__close {
+   top: -35px;
+   right: -5px;
+   transform: translate(-35%, -5%);
+  }
+}
