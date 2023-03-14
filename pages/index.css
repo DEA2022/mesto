@@ -25,79 +25,31 @@
 @import url(../blocks/photo/__item/photo__item.css);
 @import url(../blocks/photo/__icon/photo__icon.css);
 @import url(../blocks/photo/__icon/_active/photo__icon_active.css);
+@import url(../blocks/photo/__trash/photo__trash.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/footer/__copiright/footer__copiright.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/_type/popup_type_cards.css);
+@import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__info/form__info.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__field/_type/form__field_type_indent.css);
+@import url(../blocks/form/__field/_type/form__field_type_indent-bottom.css);
 @import url(../blocks/form/__field/_el/form__field_el_name.css);
 @import url(../blocks/form/__field/_el/form__field_el_job.css);
+@import url(../blocks/form/__field/_el/form__field_el_place.css);
+@import url(../blocks/form/__field/_el/form__field_el_webcite.css);
 @import url(../blocks/form/__submit/form__submit.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close/_add/popup__close_add_img.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__img-container/popup__img-container.css);
+@import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/__close/_el/popup__close_el_pic.css);
 
-.photo__trash {
-  background-image: url(../images/trash.svg);
-  background-color: rgba(0, 0, 0, 0);
-  border: 0;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 18px;
-  height: 19px;
-}
-
-.photo__trash:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-.form__field_type_indent-bottom {
-  margin-bottom: 30px;
-}
-
-.popup__figure {
-  margin: 0;
-}
-
-
-.popup__img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.popup__img {
-max-height: 75vh;
-height: 100%;
-width: 100%;
-max-width: 75vw;
-margin-bottom: 10px;
-}
-
-.popup__caption {
-  font-size: 12px;
-  line-height: 1.25;
-  color: #fff;
-}
-
-.popup__close_el_pic {
-  position: absolute;
-  top: -38px;
-  right: -45px;
-
-}
-
-@media (max-width: 690px) {
-  .popup__close {
-   top: -35px;
-   right: -5px;
-   transform: translate(-35%, -5%);
-  }
-}

@@ -1,6 +1,6 @@
 const popupElement = document.querySelector('.popup');
-const popupElementForAddCard = document.querySelector('.popup-cards');
-const popupElementForOpenImg = document.querySelector('.popup-img');
+const popupElementForAddCard = document.querySelector('.popup_type_cards');
+const popupElementForOpenImg = document.querySelector('.popup_type_image');
 const popupOpenBtnElement = document.querySelector('.profile__edit');
 const popupOpenForAddCardBtnElement = document.querySelector('.profile__button');
 const popupCloseBtnElement = popupElement.querySelector('.popup__close');
@@ -52,20 +52,22 @@ const createNewCard = function (name, link, alt) {
   const cardElement = cardTemplate.querySelector('.photo__card').cloneNode(true);
   cardElement.querySelector('.photo__name').textContent = name;
   cardElement.querySelector('.photo__item').src = link;
+
   if (alt) {
     cardElement.querySelector('.photo__item').alt = alt;
-  }
-  //лайк
+  };
+
+  // Лайк
   cardElement.querySelector('.photo__icon').addEventListener('click', function makeLike(evt) {
     evt.target.classList.toggle('photo__icon_active');
   });
-  // удаление элемента
 
+  // Удаление элемента
   cardElement.querySelector('.photo__trash').addEventListener('click', function () {
     cardElement.remove();
   });
 
-  // открытие попапа с картинкой
+  // Открытие попапа с картинкой
   cardElement.querySelector('.photo__item').addEventListener('click', function () {
     popupElementForOpenImg.querySelector('.popup__img').src = link;
     popupElementForOpenImg.querySelector('.popup__caption').textContent = name;
@@ -77,7 +79,7 @@ const createNewCard = function (name, link, alt) {
   return cardElement;
 };
 
-// добавление массива карточек
+// Добавление массива карточек
 initialCards.forEach(function (item) {
   createNewCard(item.name, item.link, item.alt);
 });
@@ -87,7 +89,7 @@ let srcOfCard = photoCard.querySelector('.photo__item').src;
 let nameOfCardField = formElementForAddCard.querySelector('.form__field_el_place');
 let srcOfCardField = formElementForAddCard.querySelector('.form__field_el_webcite');
 
-//открытие попапа профиля
+// Открытие попапа профиля
 const openPopup = function () {
   nameInput.value = nameInputNewValue.textContent;
   jobInput.value = jobInputNewValue.textContent;
@@ -95,24 +97,24 @@ const openPopup = function () {
 };
 popupOpenBtnElement.addEventListener('click', openPopup);
 
-// закрытие попапа профиля
+// Закрытие попапа профиля
 const closePopup = function () {
   popupElement.classList.remove('popup_opened');
 };
 popupCloseBtnElement.addEventListener('click', closePopup);
 
-// открытие попапа добавления карточки
+// Открытие попапа добавления карточки
 const openPopupForAddCard = function () {
   popupElementForAddCard.classList.add('popup_opened');
 };
 popupOpenForAddCardBtnElement.addEventListener('click', openPopupForAddCard);
-// закрытие попапа добавления карточки
+// Закрытие попапа добавления карточки
 const closePopupForAddCard = function () {
   popupElementForAddCard.classList.remove('popup_opened');
 };
 popupCloseForAddCardBtnElement.addEventListener('click', closePopupForAddCard);
 
-// закрытие попапа с картинкой
+// Закрытие попапа с картинкой
 const closePopupForOpenImg = function () {
   popupElementForOpenImg.classList.remove('popup_opened');
 };
@@ -126,12 +128,13 @@ const closePopupByClickOverlay = function (event) {
     closePopupForOpenImg();
   }
 };
+
 popupElement.addEventListener('click', closePopupByClickOverlay);
 popupElementForAddCard.addEventListener('click', closePopupByClickOverlay);
 popupElementForOpenImg.addEventListener('click', closePopupByClickOverlay);
 
 
-// сабмит на отправку формы
+// Сабмит на отправку формы
 const handleFormSubmit = function (evt) {
   evt.preventDefault();
   nameInputNewValue.textContent = nameInput.value;
@@ -141,7 +144,7 @@ const handleFormSubmit = function (evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-//сабмит на добавление новой карточки
+// Сабмит на добавление новой карточки
 const addNewCardFormSubmit = function (evt) {
   evt.preventDefault();
   const cardElement = createNewCard(nameOfCardField.value, srcOfCardField.value);
