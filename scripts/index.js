@@ -79,7 +79,7 @@ const closePopup = function (popup) {
 };
 
 // Сабмит на отправку формы
-const handleFormSubmit = function (evt) {
+const submitEditProfileForm = function (evt) {
   evt.preventDefault();
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
@@ -87,11 +87,10 @@ const handleFormSubmit = function (evt) {
 };
 
 // Сабмит на добавление новой карточки
-const addNewCardFormSubmit = function (evt) {
+const submitAddNewCardForm = function (evt) {
   evt.preventDefault();
   const cardElement = createCard(cardNameField.value, cardSrcField.value);
   cardsContainer.prepend(cardElement);
-  formElementAddCard.reset();
   closePopup(popupAddCard);
 };
 
@@ -102,6 +101,7 @@ buttonOpenPopupEditProfile.addEventListener('click', function () {
 });
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
+  formElementAddCard.reset();
   openPopup(popupAddCard);
 });
 
@@ -117,6 +117,6 @@ buttonClosePopupViewImg.addEventListener('click', function () {
   closePopup(popupViewImg);
 });
 
-formEditProfileElement.addEventListener('submit', handleFormSubmit);
+formEditProfileElement.addEventListener('submit', submitEditProfileForm);
 
-formElementAddCard.addEventListener('submit', addNewCardFormSubmit);
+formElementAddCard.addEventListener('submit', submitAddNewCardForm);
