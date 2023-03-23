@@ -1,3 +1,4 @@
+const popupElement = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
 const popupViewImg = document.querySelector('.popup_type_image');
@@ -78,6 +79,20 @@ const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
 };
 
+// Функция закрытия попапа по клику на оверлей
+const closePopupByClickOverlay = function (event) {
+  if (event.currentTarget === event.target && popupEditProfile.classList.contains('popup_opened')) {
+    closePopup(popupEditProfile);
+  }
+  if (event.currentTarget === event.target && popupAddCard.classList.contains('popup_opened')) {
+    closePopup(popupAddCard);
+  }
+  if (event.currentTarget === event.target && popupViewImg.classList.contains('popup_opened')) {
+    closePopup(popupViewImg);
+  }
+}
+
+
 // Сабмит на отправку формы
 const submitEditProfileForm = function (evt) {
   evt.preventDefault();
@@ -116,6 +131,10 @@ buttonClosePopupAddCard.addEventListener('click', function () {
 buttonClosePopupViewImg.addEventListener('click', function () {
   closePopup(popupViewImg);
 });
+
+popupEditProfile.addEventListener('click', closePopupByClickOverlay);
+popupAddCard.addEventListener('click', closePopupByClickOverlay);
+popupViewImg.addEventListener('click', closePopupByClickOverlay);
 
 formEditProfileElement.addEventListener('submit', submitEditProfileForm);
 
