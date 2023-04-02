@@ -74,6 +74,7 @@ initialCards.forEach(function (item) {
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByClickEsc);
+  // checkInputValidity();
 };
 
 // Общая функция закрытия попапов
@@ -103,9 +104,6 @@ if (evt.key === 'Escape') {
   });
 }
 }
-
-
-
 
 // Сабмит на отправку формы
 const submitEditProfileForm = function (evt) {

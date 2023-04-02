@@ -38,8 +38,6 @@
 @import url(../blocks/form/__info/form__info.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__field/form__field.css);
-@import url(../blocks/form/__field/_type/form__field_type_indent.css);
-@import url(../blocks/form/__field/_type/form__field_type_indent-bottom.css);
 @import url(../blocks/form/__field/_el/form__field_el_name.css);
 @import url(../blocks/form/__field/_el/form__field_el_job.css);
 @import url(../blocks/form/__field/_el/form__field_el_place.css);
@@ -53,3 +51,28 @@
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__close/_el/popup__close_el_pic.css);
 
+.form__error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.form__field_type_error-line {
+  border-bottom-color: #FF0000;
+}
+
+.form__submit_disabled {
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, .2);
+  border: 1px solid rgba(0, 0, 0, .2);
+  cursor: not-allowed;
+
+}
+
+.form__error_active {
+  visibility: visible;
+  opacity: 1;
+}

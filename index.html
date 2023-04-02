@@ -41,18 +41,16 @@
     </footer>
     <div class="popup popup_type_profile">
       <div class="popup__container">
-        <form action="#" class="form" name="Профиль">
+        <form action="#" class="form" name="Профиль" novalidate>
+          <h2 class="form__title">Редактировать профиль</h2>
           <fieldset class="form__info">
-            <h2 class="form__title">
-              Редактировать профиль
-            </h2>
-            <input type="text" class="form__field form__field_el_name" placeholder="Введите имя" required>
-            <input type="text" class="form__field form__field_type_indent form__field_el_job"
-              placeholder="Введите информацию о себе" required>
+            <input type="text" class="form__field form__field_el_name" id="form-name" placeholder="Введите имя" minlength="2" maxlength="40" required>
+            <span class="form__error form-name-error">Вы пропустили это поле</span>
+            <input type="text" class="form__field form__field_el_job" id="form-job"
+              placeholder="Введите информацию о себе"  minlength="2" maxlength="200" required>
+              <span class="form__error form-job-error">Введите адрес сайта</span>
           </fieldset>
-          <button class="form__submit" type="submit">
-            Сохранить
-          </button>
+          <button class="form__submit" type="submit">Сохранить</button>
         </form>
         <button class="popup__close popup__close_el_profile" type="button">
 
@@ -61,17 +59,17 @@
     </div>
     <div class="popup popup_type_cards">
       <div class="popup__container">
-        <form action="#" class="form" name="Добавление карточки">
+        <form action="#" class="form" name="Добавление карточки" novalidate>
+          <h2 class="form__title">Новое место</h2>
           <fieldset class="form__info">
-            <h2 class="form__title">Новое место</h2>
-            <input type="text" class="form__field form__field_type_indent-bottom form__field_el_place"
-              placeholder="Название" required>
-            <input type="text" class="form__field form__field_type_indent form__field_el_webcite"
+            <input type="text" class="form__field form__field_el_place" id="form-place"
+              placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="form__error form-place-error">Вы пропустили это поле</span>
+            <input type="url" class="form__field form__field_el_webcite" id="form-url"
               placeholder="Ссылка на картинку" required>
+              <span class="form__error form-url-error">Вы пропустили это поле</span>
           </fieldset>
-          <button class="form__submit" type="submit">
-            Создать
-          </button>
+          <button class="form__submit" type="submit">Создать</button>
         </form>
         <button class="popup__close popup__close_add_img" type="button">
 
@@ -106,6 +104,7 @@
     </template>
   </div>
   <script defer src="./scripts/constants.js"></script>
+  <script defer src="./scripts/validate.js"></script>
   <script defer src="./scripts/index.js"></script>
 </body>
 </html>
