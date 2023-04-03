@@ -13,11 +13,11 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
+  cursor: pointer;
 }
 
 .form__submit:hover {
   opacity: 0.8;
-  cursor: pointer;
 }
 
 @media (max-width: 690px) {

@@ -29,6 +29,14 @@ const cardElement = cardTemplate.querySelector('.photo__card');
 const cardNameField = formElementAddCard.querySelector('.form__field_el_place');
 const cardSrcField = formElementAddCard.querySelector('.form__field_el_webcite');
 
+// переменные для переключения кнопок при ошибках
+const buttonSubmitformEditProfileElement = formEditProfileElement.querySelector('.form__submit');
+const inputsformEditProfileElement = formEditProfileElement.querySelectorAll('.form__field');
+
+const buttonSubmitformElementAddCard = formElementAddCard.querySelector('.form__submit');
+const inputsformElementAddCard = formElementAddCard.querySelectorAll('.form__field');
+
+
 
 const createCard = function (name, link, alt) {
   const cloneCardElement = cardElement.cloneNode(true);
@@ -122,13 +130,19 @@ const submitAddNewCardForm = function (evt) {
 };
 
 buttonOpenPopupEditProfile.addEventListener('click', function () {
-  openPopup(popupEditProfile);
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
+  clearInputErrors(formEditProfileElement);
+  toggleButtonState(inputsformEditProfileElement, buttonSubmitformEditProfileElement, validationObject);
+  openPopup(popupEditProfile);
 });
+
+
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
   formElementAddCard.reset();
+  clearInputErrors(formElementAddCard);
+  toggleButtonState(inputsformElementAddCard, buttonSubmitformElementAddCard, validationObject);
   openPopup(popupAddCard);
 });
 

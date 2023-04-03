@@ -1,0 +1,9 @@
+.form__error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 1.25;
+  min-height: 30px;
+  margin-bottom: 10px;
+  visibility: hidden;
+  opacity: 0;
+}

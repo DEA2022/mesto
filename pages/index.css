@@ -50,29 +50,7 @@
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__close/_el/popup__close_el_pic.css);
-
-.form__error {
-  color: #FF0000;
-  font-size: 12px;
-  line-height: 1.25;
-  margin-bottom: 10px;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.form__field_type_error-line {
-  border-bottom-color: #FF0000;
-}
-
-.form__submit_disabled {
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, .2);
-  border: 1px solid rgba(0, 0, 0, .2);
-  cursor: not-allowed;
-
-}
-
-.form__error_active {
-  visibility: visible;
-  opacity: 1;
-}
+@import url(../blocks/form/__error/form__error.css);
+@import url(../blocks/form/__field/_type/form__field_type_error-line.css);
+@import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
+@import url(../blocks/form/__error/_active/form__error_active.css);
