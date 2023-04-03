@@ -106,11 +106,11 @@ const closePopupByClickOverlay = function (event) {
 
 // Функция закрытия попапа по клику на esc
 const closePopupByClickEsc = function (evt) {
-if (evt.key === 'Escape') {
-  popupElements.forEach((popup) => {
-    closePopup(popup);
-  });
-}
+  if (evt.key === 'Escape') {
+    popupElements.forEach((popup) => {
+      closePopup(popup);
+    });
+  }
 }
 
 // Сабмит на отправку формы
@@ -138,7 +138,6 @@ buttonOpenPopupEditProfile.addEventListener('click', function () {
 });
 
 
-
 buttonOpenPopupAddCard.addEventListener('click', function () {
   formElementAddCard.reset();
   clearInputErrors(formElementAddCard);
@@ -146,21 +145,24 @@ buttonOpenPopupAddCard.addEventListener('click', function () {
   openPopup(popupAddCard);
 });
 
-buttonClosePopupEditProfile.addEventListener('click', function () {
-  closePopup(popupEditProfile);
-});
+// функция назначающая слушатели закрытия попапа нажатием на крестик
+const hangEventListenersForClosePopup = (button, popup) => {
+  button.addEventListener('click', function () {
+    closePopup(popup);
+  });
+}
 
-buttonClosePopupAddCard.addEventListener('click', function () {
-  closePopup(popupAddCard);
-});
+hangEventListenersForClosePopup(buttonClosePopupEditProfile, popupEditProfile);
+hangEventListenersForClosePopup(buttonClosePopupAddCard, popupAddCard);
+hangEventListenersForClosePopup(buttonClosePopupViewImg, popupViewImg);
 
-buttonClosePopupViewImg.addEventListener('click', function () {
-  closePopup(popupViewImg);
-});
-
-popupEditProfile.addEventListener('click', closePopupByClickOverlay);
-popupAddCard.addEventListener('click', closePopupByClickOverlay);
-popupViewImg.addEventListener('click', closePopupByClickOverlay);
+// функция назначающая слушатели закрытия попапа нажатием на оверлей
+const hangEventListenersForClosePopupByOverlay = (popup) => {
+  popup.addEventListener('click', closePopupByClickOverlay);
+};
+hangEventListenersForClosePopupByOverlay(popupEditProfile);
+hangEventListenersForClosePopupByOverlay(popupAddCard);
+hangEventListenersForClosePopupByOverlay(popupViewImg);
 
 formEditProfileElement.addEventListener('submit', submitEditProfileForm);
 
