@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script defer src="./scripts/constants.js"></script>
+  <script defer src="./scripts/validate.js"></script>
+  <script defer src="./scripts/index.js"></script>
   <title>Проект Место</title>
 </head>
 <body class="root">
@@ -19,14 +22,14 @@
           <div class="profile__common">
             <div class="profile__name-content">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit" type="button">
+              <button class="profile__edit" type="button" aria-label="Редактирование профиля">
 
               </button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__button" type="button">
+        <button class="profile__button" type="button" aria-label="Добавление карточки">
 
         </button>
       </section>
@@ -50,9 +53,9 @@
               placeholder="Введите информацию о себе"  minlength="2" maxlength="200" required>
               <span class="form__error form-job-error"></span>
           </fieldset>
-          <button class="form__submit" type="submit">Сохранить</button>
+          <button class="form__submit" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
-        <button class="popup__close popup__close_el_profile" type="button">
+        <button class="popup__close popup__close_el_profile" type="button" aria-label="Закрыть">
 
         </button>
       </div>
@@ -69,9 +72,9 @@
               placeholder="Ссылка на картинку" required>
               <span class="form__error form-url-error"></span>
           </fieldset>
-          <button class="form__submit" type="submit">Создать</button>
+          <button class="form__submit" type="submit" aria-label="Создать">Создать</button>
         </form>
-        <button class="popup__close popup__close_add_img" type="button">
+        <button class="popup__close popup__close_add_img" type="button" aria-label="Закрыть">
 
         </button>
       </div>
@@ -82,7 +85,7 @@
           <img src="#" alt="#" class="popup__img">
           <figcaption class="popup__caption"></figcaption>
         </figure>
-        <button class="popup__close popup__close_el_pic" type="button">
+        <button class="popup__close popup__close_el_pic" type="button" aria-label="Закрыть">
 
         </button>
       </div>
@@ -91,20 +94,17 @@
     <template class="card">
       <li class="photo__card">
         <img src="#" alt="#" class="photo__item">
-        <button class="photo__trash" type="button">
+        <button class="photo__trash" type="button" aria-label="Корзина">
 
         </button>
         <div class="photo__wrap">
           <h2 class="photo__name"></h2>
-          <button class="photo__icon" type="button">
+          <button class="photo__icon" type="button" aria-label="Лайк">
 
           </button>
         </div>
       </li>
     </template>
   </div>
-  <script defer src="./scripts/constants.js"></script>
-  <script defer src="./scripts/validate.js"></script>
-  <script defer src="./scripts/index.js"></script>
 </body>
 </html>

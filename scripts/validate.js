@@ -8,29 +8,29 @@ const validationObject = {
 }
 
 // функция валидации
-const enableValidation = ({formSelector, ...rest}) => {
+const enableValidation = ({ formSelector, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
 
   formList.forEach((form) => {
-    form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-
     setEventListeners(form, rest);
   });
-  }
+}
 
 // навешивание слушателей на инпуты
-const setEventListeners = (form, {inputSelector, submitButtonSelector, ...rest}) => {
+const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest }) => {
   const inputList = Array.from(form.querySelectorAll(inputSelector));
   const formButton = form.querySelector(submitButtonSelector);
+
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+  });
 
   inputList.forEach((input) => {
     input.addEventListener('input', () => {
       checkInputValidity(input, rest);
       toggleButtonState(inputList, formButton, rest);
+    });
   });
-});
 }
 
 
@@ -46,30 +46,38 @@ const checkInputValidity = (input, rest) => {
 };
 
 // функция, показывающая ошибку при невалидном инпуте
-const showInputError = (input, inputErrorElements, {inputErrorClass, errorClass, ...rest}) => {
+const showInputError = (input, inputErrorElements, { inputErrorClass, errorClass, ...rest }) => {
   input.classList.add(inputErrorClass);
   inputErrorElements.classList.add(errorClass);
   inputErrorElements.textContent = input.validationMessage;
 }
 
 // функция, скрывающая ошибку при валидном инпуте
-const hideInputError = (input, inputErrorElements, {inputErrorClass, errorClass, ...rest}) => {
+const hideInputError = (input, inputErrorElements, { inputErrorClass, errorClass, ...rest }) => {
   input.classList.remove(inputErrorClass);
   inputErrorElements.classList.remove(errorClass);
   inputErrorElements.textContent = '';
 }
 
 // функция, активирующая кнопку при валидных значениях и деактивирующая при невалидных
-const toggleButtonState = (inputList, formButton, {inactiveButtonClass}) => {
-  if(hasInvalidInput(inputList)) {
-    formButton.classList.add(inactiveButtonClass);
-    formButton.setAttribute('disabled', true);
+const toggleButtonState = (inputList, formButton, { inactiveButtonClass }) => {
+  if (hasInvalidInput(inputList)) {
+    disableButton(formButton, inactiveButtonClass);
   }
   else {
-    formButton.classList.remove(inactiveButtonClass);
-    formButton.removeAttribute('disabled');
+    enableButton(formButton, inactiveButtonClass);
   }
 };
+
+const enableButton = (formButton, inactiveButtonClass) => {
+  formButton.classList.remove(inactiveButtonClass);
+  formButton.removeAttribute('disabled');
+}
+
+const disableButton = (formButton, inactiveButtonClass) => {
+  formButton.classList.add(inactiveButtonClass);
+  formButton.setAttribute('disabled', true);
+}
 
 // Булевая проверка на наличие невалидного инпута
 const hasInvalidInput = ((inputList) => {
@@ -77,12 +85,12 @@ const hasInvalidInput = ((inputList) => {
 });
 
 // функция, очищающая поля от ошибок
-const clearInputErrors = (form) => {
-  form.querySelectorAll(`.${validationObject.errorClass}`).forEach(element => {
-    element.classList.remove(validationObject.errorClass);
+const clearInputErrors = (form, { errorClass, inputErrorClass }) => {
+  form.querySelectorAll(`.${errorClass}`).forEach(element => {
+    element.classList.remove(errorClass);
   });
-  form.querySelectorAll(`.${validationObject.inputErrorClass}`).forEach(element => {
-    element.classList.remove(validationObject.inputErrorClass);
+  form.querySelectorAll(`.${inputErrorClass}`).forEach(element => {
+    element.classList.remove(inputErrorClass);
   });
 }
 
