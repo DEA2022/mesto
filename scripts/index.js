@@ -1,3 +1,5 @@
+import {initialCards} from './constants.js'
+
 const popupElements = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
