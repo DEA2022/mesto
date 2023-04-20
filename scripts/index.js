@@ -1,4 +1,5 @@
-import {initialCards} from './constants.js'
+import {initialCards} from './constants.js';
+import Card from './Card.js';
 
 const popupElements = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_profile');
@@ -26,11 +27,9 @@ const profileJobElement = document.querySelector('.profile__subtitle');
 
 const cardsContainer = document.querySelector('.photo__grid');
 const cardTemplate = document.querySelector('.card').content;
-const cardElement = cardTemplate.querySelector('.photo__card');
 
 const cardNameField = formElementAddCard.querySelector('.form__field_el_place');
 const cardSrcField = formElementAddCard.querySelector('.form__field_el_webcite');
-const cardAltField = formElementAddCard.querySelector('.form__field_el_place');
 
 // переменные для переключения кнопок при ошибках
 const buttonSubmitFormEditProfileElement = formEditProfileElement.querySelector('.form__submit');
@@ -39,53 +38,36 @@ const inputsFormEditProfileElement = formEditProfileElement.querySelectorAll('.f
 const buttonSubmitFormElementAddCard = formElementAddCard.querySelector('.form__submit');
 const inputsFormElementAddCard = formElementAddCard.querySelectorAll('.form__field');
 
-
-
-const createCard = function (name, link, alt) {
-  const cloneCardElement = cardElement.cloneNode(true);
-  const photoItemElement = cloneCardElement.querySelector('.photo__item');
-
-  cloneCardElement.querySelector('.photo__name').textContent = name;
-  photoItemElement.src = link;
-  photoItemElement.alt = alt;
-
-  // Лайк
-  cloneCardElement.querySelector('.photo__icon').addEventListener('click', function makeLike(evt) {
-    evt.target.classList.toggle('photo__icon_active');
-  });
-
-  // Удаление элемента
-  cloneCardElement.querySelector('.photo__trash').addEventListener('click', function () {
-    cloneCardElement.remove();
-  });
-
-  // Открытие попапа с картинкой
-  photoItemElement.addEventListener('click', function () {
-    viewImgElement.src = link;
-    viewImgElement.alt = alt;
-    captionElement.textContent = name;
-
-    openPopup(popupViewImg);
-  });
-
-  return cloneCardElement;
-};
+const createCard = () => {
+  const card = new Card(cardTemplate);
+  const cardElement = card.createCardElement();
+  return cardElement;
+}
 
 // Добавление карточки в DOM
-const addCard = function (name, link, alt) {
-  cardsContainer.append(createCard(name, link, alt));
+const addCard = function (cardElement) {
+  cardsContainer.append(createCard(cardElement));
 };
 
 // Добавление массива карточек
 initialCards.forEach(function (item) {
-  addCard(item.name, item.link, item.alt);
+  const card = new Card(cardTemplate);
+
+  card.addCallbackOnClickPhotoCard(function() {
+    viewImgElement.src = item.link;
+    viewImgElement.alt = item.name;
+    captionElement.textContent = item.name;
+
+    openPopup(popupViewImg);
+  });
+
+  cardsContainer.append(card.createCardElement(item));
 });
 
 // Общая функция открытия попапов
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByClickEsc);
-  // checkInputValidity();
 };
 
 // Общая функция закрытия попапов
@@ -120,8 +102,15 @@ const submitEditProfileForm = function (evt) {
 // Сабмит на добавление новой карточки
 const submitAddNewCardForm = function (evt) {
   evt.preventDefault();
-  const cardElement = createCard(cardNameField.value, cardSrcField.value, cardAltField.value);
-  cardsContainer.prepend(cardElement);
+  const card = new Card(cardTemplate);
+  card.addCallbackOnClickPhotoCard(function() {
+    viewImgElement.src = cardSrcField.value;
+    viewImgElement.alt = cardNameField.value;
+    captionElement.textContent = cardNameField.value;
+
+    openPopup(popupViewImg);
+  });
+  cardsContainer.prepend(card.createCardElement({name: cardNameField.value, link: cardSrcField.value}));
   closePopup(popupAddCard);
 };
 
@@ -132,7 +121,6 @@ buttonOpenPopupEditProfile.addEventListener('click', function () {
   toggleButtonState(inputsFormEditProfileElement, buttonSubmitFormEditProfileElement, validationObject);
   openPopup(popupEditProfile);
 });
-
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
   formElementAddCard.reset();
