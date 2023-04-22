@@ -48,19 +48,25 @@ formEditProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(validationObject, formAddCard);
 formAddCardValidator.enableValidation();
 
+const onClickPhotoCard = (name, link) => {
+  viewImgElement.src = link;
+  viewImgElement.alt = name;
+  captionElement.textContent = name;
+  openPopup(popupViewImg);
+}
+
+const createCard = (cardTemplate, cardData, onClickPhotoCard) => {
+  const card = new Card(cardTemplate, cardData, onClickPhotoCard);
+  const cardElement = card.createCardElement();
+
+  return cardElement;
+}
+
 // Добавление массива карточек
 initialCards.forEach(function (item) {
-  const onClickPhotoCard = () => {
-    viewImgElement.src = item.link;
-    viewImgElement.alt = item.name;
-    captionElement.textContent = item.name;
+  const card = createCard(cardTemplate, item, onClickPhotoCard);
 
-    openPopup(popupViewImg);
-  }
-
-  const card = new Card(cardTemplate, item, onClickPhotoCard);
-
-  cardsContainer.append(card.createCardElement());
+  cardsContainer.append(card);
 });
 
 // Общая функция открытия попапов
@@ -107,16 +113,9 @@ const submitAddNewCardForm = function (evt) {
     link: cardSrcField.value
   }
 
-  const onClickPhotoCard = () => {
-    viewImgElement.src = cardSrcField.value;
-    viewImgElement.alt = cardNameField.value;
-    captionElement.textContent = cardNameField.value;
-    openPopup(popupViewImg);
-  }
+  const card = createCard(cardTemplate, cardData, onClickPhotoCard);
 
-  const card = new Card(cardTemplate, cardData, onClickPhotoCard);
-
-  cardsContainer.prepend(card.createCardElement());
+  cardsContainer.prepend(card);
 
   closePopup(popupAddCard);
 };

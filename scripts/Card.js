@@ -29,7 +29,7 @@ class Card {
       this._deleteCard();
     });
     this._cardElement.querySelector('.photo__item').addEventListener('click', () => {
-      this._onClickPhotoCard();
+      this._onClickPhotoCard(this._cardData.name, this._cardData.link);
     });
   }
 
