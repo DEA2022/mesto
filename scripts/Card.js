@@ -1,21 +1,18 @@
 class Card {
-  constructor(templateSelector) {
+  constructor(templateSelector, cardData, onClickPhotoCard) {
     this._cardElement = this._getTemplate(templateSelector);
+    this._cardData = cardData;
+    this._onClickPhotoCard = onClickPhotoCard;
   }
 
-  createCardElement(data) {
+  createCardElement() {
     this._setEventListeners();
     const photoItemElement = this._cardElement.querySelector('.photo__item');
-    this._cardElement.querySelector('.photo__name').textContent = data.name;
-    photoItemElement.src = data.link;
-    photoItemElement.alt = data.name;
+    this._cardElement.querySelector('.photo__name').textContent = this._cardData.name;
+    photoItemElement.src = this._cardData.link;
+    photoItemElement.alt = this._cardData.name;
 
     return this._cardElement;
-  }
-
-  addCallbackOnClickPhotoCard(callback) {
-    const photoItemElement = this._cardElement.querySelector('.photo__item');
-    photoItemElement.addEventListener('click', callback);
   }
 
   _getTemplate(templateSelector) {
@@ -30,6 +27,9 @@ class Card {
     });
     this._cardElement.querySelector('.photo__trash').addEventListener('click', () => {
       this._deleteCard();
+    });
+    this._cardElement.querySelector('.photo__item').addEventListener('click', () => {
+      this._onClickPhotoCard();
     });
   }
 

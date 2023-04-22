@@ -1,4 +1,4 @@
-import {initialCards} from './constants.js';
+import { initialCards } from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
@@ -48,31 +48,19 @@ formEditProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(validationObject, formAddCard);
 formAddCardValidator.enableValidation();
 
-// создание экземпляра карточки
-const createCard = () => {
-  const card = new Card(cardTemplate);
-  const cardElement = card.createCardElement();
-  return cardElement;
-}
-
-// Добавление карточки в DOM
-const addCard = function (cardElement) {
-  cardsContainer.append(createCard(cardElement));
-};
-
 // Добавление массива карточек
 initialCards.forEach(function (item) {
-  const card = new Card(cardTemplate);
-
-  card.addCallbackOnClickPhotoCard(function() {
+  const onClickPhotoCard = () => {
     viewImgElement.src = item.link;
     viewImgElement.alt = item.name;
     captionElement.textContent = item.name;
 
     openPopup(popupViewImg);
-  });
+  }
 
-  cardsContainer.append(card.createCardElement(item));
+  const card = new Card(cardTemplate, item, onClickPhotoCard);
+
+  cardsContainer.append(card.createCardElement());
 });
 
 // Общая функция открытия попапов
@@ -113,15 +101,23 @@ const submitEditProfileForm = function (evt) {
 // Сабмит на добавление новой карточки
 const submitAddNewCardForm = function (evt) {
   evt.preventDefault();
-  const card = new Card(cardTemplate);
-  card.addCallbackOnClickPhotoCard(function() {
+
+  const cardData = {
+    name: cardNameField.value,
+    link: cardSrcField.value
+  }
+
+  const onClickPhotoCard = () => {
     viewImgElement.src = cardSrcField.value;
     viewImgElement.alt = cardNameField.value;
     captionElement.textContent = cardNameField.value;
-
     openPopup(popupViewImg);
-  });
-  cardsContainer.prepend(card.createCardElement({name: cardNameField.value, link: cardSrcField.value}));
+  }
+
+  const card = new Card(cardTemplate, cardData, onClickPhotoCard);
+
+  cardsContainer.prepend(card.createCardElement());
+
   closePopup(popupAddCard);
 };
 
