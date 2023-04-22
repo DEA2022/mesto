@@ -1,7 +1,7 @@
 import {initialCards} from './constants.js';
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
-const popupElements = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
 const popupViewImg = document.querySelector('.popup_type_image');
@@ -18,26 +18,37 @@ const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const buttonOpenPopupAddCard = document.querySelector('.profile__button');
 
 // Формы в попапах и поля форм
-const formEditProfileElement = popupEditProfile.querySelector('.form');
-const formElementAddCard = popupAddCard.querySelector('.form');
-const nameInput = formEditProfileElement.querySelector('.form__field_el_name');
-const jobInput = formEditProfileElement.querySelector('.form__field_el_job');
+const formEditProfile = popupEditProfile.querySelector('.form');
+const formAddCard = popupAddCard.querySelector('.form');
+const nameInput = formEditProfile.querySelector('.form__field_el_name');
+const jobInput = formEditProfile.querySelector('.form__field_el_job');
 const profileNameElement = document.querySelector('.profile__title');
 const profileJobElement = document.querySelector('.profile__subtitle');
 
 const cardsContainer = document.querySelector('.photo__grid');
 const cardTemplate = document.querySelector('.card').content;
 
-const cardNameField = formElementAddCard.querySelector('.form__field_el_place');
-const cardSrcField = formElementAddCard.querySelector('.form__field_el_webcite');
+const cardNameField = formAddCard.querySelector('.form__field_el_place');
+const cardSrcField = formAddCard.querySelector('.form__field_el_webcite');
 
-// переменные для переключения кнопок при ошибках
-const buttonSubmitFormEditProfileElement = formEditProfileElement.querySelector('.form__submit');
-const inputsFormEditProfileElement = formEditProfileElement.querySelectorAll('.form__field');
+const validationObject = {
+  formSelector: '.form',
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__field_type_error-line',
+  errorClass: 'form__error_active'
+}
 
-const buttonSubmitFormElementAddCard = formElementAddCard.querySelector('.form__submit');
-const inputsFormElementAddCard = formElementAddCard.querySelectorAll('.form__field');
+// создаем экземпляр валидатора формы профиля
+const formEditProfileValidator = new FormValidator(validationObject, formEditProfile);
+formEditProfileValidator.enableValidation();
 
+// создаем экземпляр валидатора формы для добавления карточки
+const formAddCardValidator = new FormValidator(validationObject, formAddCard);
+formAddCardValidator.enableValidation();
+
+// создание экземпляра карточки
 const createCard = () => {
   const card = new Card(cardTemplate);
   const cardElement = card.createCardElement();
@@ -117,15 +128,16 @@ const submitAddNewCardForm = function (evt) {
 buttonOpenPopupEditProfile.addEventListener('click', function () {
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
-  clearInputErrors(formEditProfileElement, validationObject);
-  toggleButtonState(inputsFormEditProfileElement, buttonSubmitFormEditProfileElement, validationObject);
+
+  formEditProfileValidator.clearInputErrors();
+
   openPopup(popupEditProfile);
 });
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
-  formElementAddCard.reset();
-  clearInputErrors(formElementAddCard, validationObject);
-  toggleButtonState(inputsFormElementAddCard, buttonSubmitFormElementAddCard, validationObject);
+  formAddCard.reset();
+  formAddCardValidator.clearInputErrors();
+
   openPopup(popupAddCard);
 });
 
@@ -149,6 +161,6 @@ hangEventListenersForClosePopupByOverlay(popupEditProfile);
 hangEventListenersForClosePopupByOverlay(popupAddCard);
 hangEventListenersForClosePopupByOverlay(popupViewImg);
 
-formEditProfileElement.addEventListener('submit', submitEditProfileForm);
+formEditProfile.addEventListener('submit', submitEditProfileForm);
 
-formElementAddCard.addEventListener('submit', submitAddNewCardForm);
+formAddCard.addEventListener('submit', submitAddNewCardForm);

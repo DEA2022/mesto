@@ -24,7 +24,7 @@ class Card {
     return cardElement;
   }
 
-  _setEventListeners(data) {
+  _setEventListeners() {
     this._cardElement.querySelector('.photo__icon').addEventListener('click', () => {
       this._toogleLike();
     });
