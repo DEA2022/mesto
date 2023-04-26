@@ -1,6 +1,7 @@
 import { initialCards } from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import Section from './Section.js';
 
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
@@ -55,19 +56,21 @@ const onClickPhotoCard = (name, link) => {
   openPopup(popupViewImg);
 }
 
-const createCard = (cardTemplate, cardData, onClickPhotoCard) => {
-  const card = new Card(cardTemplate, cardData, onClickPhotoCard);
-  const cardElement = card.createCardElement();
+// Объект для отрисовки карточек
+const renderPageData = {
+  items: initialCards,
 
-  return cardElement;
+  renderer: (item) => {
+    const card = new Card(cardTemplate, item, onClickPhotoCard);
+    const cardElement = card.createCardElement();
+
+    return cardElement;
+  }
 }
 
-// Добавление массива карточек
-initialCards.forEach(function (item) {
-  const card = createCard(cardTemplate, item, onClickPhotoCard);
-
-  cardsContainer.append(card);
-});
+// добавление массива карточек
+const section = new Section(renderPageData, cardsContainer)
+section.rendererElements();
 
 // Общая функция открытия попапов
 const openPopup = function (popup) {
@@ -113,12 +116,11 @@ const submitAddNewCardForm = function (evt) {
     link: cardSrcField.value
   }
 
-  const card = createCard(cardTemplate, cardData, onClickPhotoCard);
-
-  cardsContainer.prepend(card);
+  section.addItem(cardData);
 
   closePopup(popupAddCard);
-};
+}
+
 
 buttonOpenPopupEditProfile.addEventListener('click', function () {
   nameInput.value = profileNameElement.textContent;
