@@ -38,9 +38,9 @@ const validationObject = {
 }
 
 // экземпляры попапов
-const popupForProfile = new Popup(popupEditProfile);
-const popupForAddCard = new Popup(popupAddCard);
-const popupForViewImg = new Popup(popupViewImg);
+const instancePopupEditProfile = new Popup(popupEditProfile);
+const instancePopupAddCard = new Popup(popupAddCard);
+const instancePopupViewImg = new Popup(popupViewImg);
 
 // создаем экземпляр валидатора формы профиля
 const formEditProfileValidator = new FormValidator(validationObject, formEditProfile);
@@ -55,7 +55,7 @@ const onClickPhotoCard = (name, link) => {
   viewImgElement.alt = name;
   captionElement.textContent = name;
 
-  popupForViewImg.openPopup();
+  instancePopupViewImg.openPopup();
 }
 
 // Объект для отрисовки карточек
@@ -78,7 +78,7 @@ const submitEditProfileForm = function (evt) {
   evt.preventDefault();
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
-  popupForProfile.closePopup(popupEditProfile);
+  instancePopupEditProfile.closePopup(popupEditProfile);
 };
 
 // Сабмит на добавление новой карточки
@@ -92,8 +92,8 @@ const submitAddNewCardForm = function (evt) {
 
   section.addItem(cardData);
 
-  popupForAddCard.closePopup(popupAddCard);
-  popupForAddCard.setEventListeners();
+  instancePopupAddCard.closePopup(popupAddCard);
+  instancePopupAddCard.setEventListeners();
 }
 
 
@@ -103,14 +103,14 @@ buttonOpenPopupEditProfile.addEventListener('click', function () {
 
   formEditProfileValidator.clearInputErrors();
 
-  popupForProfile.openPopup(popupEditProfile);
+  instancePopupEditProfile.openPopup(popupEditProfile);
 });
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
   formAddCard.reset();
   formAddCardValidator.clearInputErrors();
 
-  popupForAddCard.openPopup(popupAddCard);
+  instancePopupAddCard.openPopup(popupAddCard);
 });
 
 formEditProfile.addEventListener('submit', submitEditProfileForm);

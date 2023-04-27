@@ -31,7 +31,7 @@ class Popup {
   }
 
   _handleOverlayClose = (evt) => {
-    if (evt.currentTarget === this._popup) {
+    if (evt.currentTarget === evt.target) {
       this.closePopup();
     }
   }
