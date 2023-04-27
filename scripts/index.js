@@ -3,12 +3,11 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import Section from './Section.js';
 import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
 
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
 const popupViewImg = document.querySelector('.popup_type_image');
-const viewImgElement = popupViewImg.querySelector('.popup__img');
-const captionElement = popupViewImg.querySelector('.popup__caption');
 
 // Кнопки открытия попапа
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
@@ -40,7 +39,7 @@ const validationObject = {
 // экземпляры попапов
 const instancePopupEditProfile = new Popup(popupEditProfile);
 const instancePopupAddCard = new Popup(popupAddCard);
-const instancePopupViewImg = new Popup(popupViewImg);
+const instancePopupViewImg = new PopupWithImage(popupViewImg);
 
 // создаем экземпляр валидатора формы профиля
 const formEditProfileValidator = new FormValidator(validationObject, formEditProfile);
@@ -50,12 +49,10 @@ formEditProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(validationObject, formAddCard);
 formAddCardValidator.enableValidation();
 
-const onClickPhotoCard = (name, link) => {
-  viewImgElement.src = link;
-  viewImgElement.alt = name;
-  captionElement.textContent = name;
 
-  instancePopupViewImg.openPopup();
+
+const onClickPhotoCard = (name, link) => {
+  instancePopupViewImg.openPopup(name, link);
 }
 
 // Объект для отрисовки карточек
@@ -95,6 +92,7 @@ const submitAddNewCardForm = function (evt) {
   instancePopupAddCard.closePopup(popupAddCard);
   instancePopupAddCard.setEventListeners();
 }
+
 
 
 buttonOpenPopupEditProfile.addEventListener('click', function () {
