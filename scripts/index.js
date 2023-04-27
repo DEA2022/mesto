@@ -2,17 +2,13 @@ import { initialCards } from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import Section from './Section.js';
+import Popup from './Popup.js';
 
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const popupAddCard = document.querySelector('.popup_type_cards');
 const popupViewImg = document.querySelector('.popup_type_image');
 const viewImgElement = popupViewImg.querySelector('.popup__img');
 const captionElement = popupViewImg.querySelector('.popup__caption');
-
-// Кнопки закрытия попапа
-const buttonClosePopupEditProfile = popupEditProfile.querySelector('.popup__close_el_profile');
-const buttonClosePopupAddCard = document.querySelector('.popup__close_add_img');
-const buttonClosePopupViewImg = popupViewImg.querySelector('.popup__close_el_pic');
 
 // Кнопки открытия попапа
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
@@ -41,6 +37,11 @@ const validationObject = {
   errorClass: 'form__error_active'
 }
 
+// экземпляры попапов
+const popupForProfile = new Popup(popupEditProfile);
+const popupForAddCard = new Popup(popupAddCard);
+const popupForViewImg = new Popup(popupViewImg);
+
 // создаем экземпляр валидатора формы профиля
 const formEditProfileValidator = new FormValidator(validationObject, formEditProfile);
 formEditProfileValidator.enableValidation();
@@ -53,13 +54,13 @@ const onClickPhotoCard = (name, link) => {
   viewImgElement.src = link;
   viewImgElement.alt = name;
   captionElement.textContent = name;
-  openPopup(popupViewImg);
+
+  popupForViewImg.openPopup();
 }
 
 // Объект для отрисовки карточек
 const renderPageData = {
   items: initialCards,
-
   renderer: (item) => {
     const card = new Card(cardTemplate, item, onClickPhotoCard);
     const cardElement = card.createCardElement();
@@ -72,39 +73,12 @@ const renderPageData = {
 const section = new Section(renderPageData, cardsContainer)
 section.rendererElements();
 
-// Общая функция открытия попапов
-const openPopup = function (popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByClickEsc);
-};
-
-// Общая функция закрытия попапов
-const closePopup = function (popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByClickEsc);
-};
-
-// Функция закрытия попапа по клику на оверлей
-const closePopupByClickOverlay = function (event) {
-  if (event.currentTarget === event.target) {
-    closePopup(event.currentTarget);
-  }
-}
-
-// Функция закрытия попапа по клику на esc
-const closePopupByClickEsc = function (evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}
-
 // Сабмит на отправку формы
 const submitEditProfileForm = function (evt) {
   evt.preventDefault();
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  popupForProfile.closePopup(popupEditProfile);
 };
 
 // Сабмит на добавление новой карточки
@@ -118,7 +92,8 @@ const submitAddNewCardForm = function (evt) {
 
   section.addItem(cardData);
 
-  closePopup(popupAddCard);
+  popupForAddCard.closePopup(popupAddCard);
+  popupForAddCard.setEventListeners();
 }
 
 
@@ -128,35 +103,15 @@ buttonOpenPopupEditProfile.addEventListener('click', function () {
 
   formEditProfileValidator.clearInputErrors();
 
-  openPopup(popupEditProfile);
+  popupForProfile.openPopup(popupEditProfile);
 });
 
 buttonOpenPopupAddCard.addEventListener('click', function () {
   formAddCard.reset();
   formAddCardValidator.clearInputErrors();
 
-  openPopup(popupAddCard);
+  popupForAddCard.openPopup(popupAddCard);
 });
-
-// функция назначающая слушатели закрытия попапа нажатием на крестик
-const hangEventListenersForClosePopup = (button, popup) => {
-  button.addEventListener('click', function () {
-    closePopup(popup);
-  });
-}
-
-hangEventListenersForClosePopup(buttonClosePopupEditProfile, popupEditProfile);
-hangEventListenersForClosePopup(buttonClosePopupAddCard, popupAddCard);
-hangEventListenersForClosePopup(buttonClosePopupViewImg, popupViewImg);
-
-// функция назначающая слушатели закрытия попапа нажатием на оверлей
-const hangEventListenersForClosePopupByOverlay = (popup) => {
-  popup.addEventListener('click', closePopupByClickOverlay);
-};
-
-hangEventListenersForClosePopupByOverlay(popupEditProfile);
-hangEventListenersForClosePopupByOverlay(popupAddCard);
-hangEventListenersForClosePopupByOverlay(popupViewImg);
 
 formEditProfile.addEventListener('submit', submitEditProfileForm);
 
