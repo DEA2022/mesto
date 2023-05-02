@@ -1,0 +1,12 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект представляет собой web-страницу, состоящую из блоков и секций с возможностью редактировать профиль",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

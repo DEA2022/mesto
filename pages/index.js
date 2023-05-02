@@ -1,39 +1,15 @@
-import { initialCards } from './constants.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import Popup from './Popup.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import { initialCards } from '../utils/constants.js';
 
-const popupEditProfile = document.querySelector('.popup_type_profile');
-const popupAddCard = document.querySelector('.popup_type_cards');
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import Section from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import {popupEditProfile, popupAddCard, buttonOpenPopupEditProfile, buttonOpenPopupAddCard, formEditProfile, formAddCard,
+nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from '../utils/constants.js'
 
-// Кнопки открытия попапа
-const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
-const buttonOpenPopupAddCard = document.querySelector('.profile__button');
 
-// Формы в попапах и поля форм
-const formEditProfile = popupEditProfile.querySelector('.form');
-const formAddCard = popupAddCard.querySelector('.form');
-const nameInput = formEditProfile.querySelector('.form__field_el_name');
-const jobInput = formEditProfile.querySelector('.form__field_el_job');
-
-const cardsContainer = document.querySelector('.photo__grid');
-const cardTemplate = document.querySelector('.card').content;
-
-const cardNameField = formAddCard.querySelector('.form__field_el_place');
-const cardSrcField = formAddCard.querySelector('.form__field_el_webcite');
-
-const validationObject = {
-  formSelector: '.form',
-  inputSelector: '.form__field',
-  submitButtonSelector: '.form__submit',
-  inactiveButtonClass: 'form__submit_disabled',
-  inputErrorClass: 'form__field_type_error-line',
-  errorClass: 'form__error_active'
-}
 // экземпляр класса UserInfo
 const instanceUserInfo = new UserInfo('.profile__title', '.profile__subtitle');
 
