@@ -1,13 +1,14 @@
-import { initialCards } from '../utils/constants.js';
+import './pages/index.css';
+import { initialCards } from './utils/constants.js';
 
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import Section from '../scripts/components/Section.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import UserInfo from '../scripts/components/UserInfo.js';
+import Card from './scripts/components/Card.js';
+import FormValidator from './scripts/components/FormValidator.js';
+import Section from './scripts/components/Section.js';
+import PopupWithImage from './scripts/components/PopupWithImage.js';
+import PopupWithForm from './scripts/components/PopupWithForm.js';
+import UserInfo from './scripts/components/UserInfo.js';
 import {popupEditProfile, popupAddCard, buttonOpenPopupEditProfile, buttonOpenPopupAddCard, formEditProfile, formAddCard,
-nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from '../utils/constants.js'
+nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from './utils/constants.js'
 
 
 // экземпляр класса UserInfo
@@ -22,6 +23,7 @@ const submitEditProfileForm = ([name, job]) => {
 // Экземпляр попапа PopupEditProfile
 const instancePopupEditProfile = new PopupWithForm('.popup_type_profile', submitEditProfileForm);
 instancePopupEditProfile.setEventListeners();
+
 buttonOpenPopupEditProfile.addEventListener('click', () => {
   const { name, job } = instanceUserInfo.getUserInfo();
   nameInput.value = name;
@@ -44,10 +46,9 @@ const submitAddNewCardForm = () => {
 // Экземпляр попапа PopupAddCard
 const instancePopupAddCard = new PopupWithForm('.popup_type_cards', submitAddNewCardForm);
 instancePopupAddCard.setEventListeners();
+
 buttonOpenPopupAddCard.addEventListener('click', () => {
-
   formAddCardValidator.clearInputErrors();
-
   instancePopupAddCard.openPopup(popupAddCard);
 });
 
