@@ -1,14 +1,14 @@
-import './pages/index.css';
-import { initialCards } from './utils/constants.js';
+import '../pages/index.css';
+import { initialCards } from '../utils/constants.js';
 
-import Card from './scripts/components/Card.js';
-import FormValidator from './scripts/components/FormValidator.js';
-import Section from './scripts/components/Section.js';
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
-import UserInfo from './scripts/components/UserInfo.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 import {popupEditProfile, popupAddCard, buttonOpenPopupEditProfile, buttonOpenPopupAddCard, formEditProfile, formAddCard,
-nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from './utils/constants.js'
+nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from '../utils/constants.js'
 
 
 // экземпляр класса UserInfo
@@ -33,13 +33,8 @@ buttonOpenPopupEditProfile.addEventListener('click', () => {
 });
 
 // колбэк сабмита на форму добавления новой карточки
-const submitAddNewCardForm = () => {
-  const cardData = {
-    name: cardNameField.value,
-    link: cardSrcField.value
-  }
-
-  section.addItem(cardData);
+const submitAddNewCardForm = ([name, link]) => {
+  section.addItem({name, link});
   instancePopupAddCard.closePopup(popupAddCard);
 }
 

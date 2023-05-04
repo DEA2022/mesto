@@ -74,13 +74,15 @@ class FormValidator {
     return Array.from(this._inputList).some((input) => !input.validity.valid);
   };
 
+  _clearInputByClassName = (className) => {
+    this._form.querySelectorAll(`.${className}`).forEach(element => {
+      element.classList.remove(className);
+    });
+  }
+
   clearInputErrors = () => {
-    this._form.querySelectorAll(`.${this._errorClass}`).forEach(element => {
-      element.classList.remove(this._errorClass);
-    });
-    this._form.querySelectorAll(`.${this._inputErrorClass}`).forEach(element => {
-      element.classList.remove(this._inputErrorClass);
-    });
+    this._clearInputByClassName(this._errorClass);
+    this._clearInputByClassName(this._inputErrorClass);
 
     this._toggleButtonState()
   }
