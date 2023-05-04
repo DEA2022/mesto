@@ -25,25 +25,6 @@ export const initialCards = [
   }
 ];
 
-export const popupEditProfile = document.querySelector('.popup_type_profile');
-export const popupAddCard = document.querySelector('.popup_type_cards');
-
-// Кнопки открытия попапа
-export const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
-export const buttonOpenPopupAddCard = document.querySelector('.profile__button');
-
-// Формы в попапах и поля форм
-export const formEditProfile = popupEditProfile.querySelector('.form');
-export const formAddCard = popupAddCard.querySelector('.form');
-export const nameInput = formEditProfile.querySelector('.form__field_el_name');
-export const jobInput = formEditProfile.querySelector('.form__field_el_job');
-
-export const cardsContainer = document.querySelector('.photo__grid');
-export const cardTemplate = document.querySelector('.card').content;
-
-export const cardNameField = formAddCard.querySelector('.form__field_el_place');
-export const cardSrcField = formAddCard.querySelector('.form__field_el_webcite');
-
 export const validationObject = {
   formSelector: '.form',
   inputSelector: '.form__field',

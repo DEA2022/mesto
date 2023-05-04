@@ -7,9 +7,26 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import {popupEditProfile, popupAddCard, buttonOpenPopupEditProfile, buttonOpenPopupAddCard, formEditProfile, formAddCard,
-nameInput, jobInput , cardsContainer, cardTemplate, cardNameField, cardSrcField, validationObject} from '../utils/constants.js'
+import {validationObject} from '../utils/constants.js'
 
+const popupEditProfile = document.querySelector('.popup_type_profile');
+const popupAddCard = document.querySelector('.popup_type_cards');
+
+// Кнопки открытия попапа
+const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
+const buttonOpenPopupAddCard = document.querySelector('.profile__button');
+
+// Формы в попапах и поля форм
+const formEditProfile = popupEditProfile.querySelector('.form');
+const formAddCard = popupAddCard.querySelector('.form');
+const nameInput = formEditProfile.querySelector('.form__field_el_name');
+const jobInput = formEditProfile.querySelector('.form__field_el_job');
+
+const cardsContainer = document.querySelector('.photo__grid');
+const cardTemplate = document.querySelector('.card').content;
+
+const cardNameField = formAddCard.querySelector('.form__field_el_place');
+const cardSrcField = formAddCard.querySelector('.form__field_el_webcite');
 
 // экземпляр класса UserInfo
 const instanceUserInfo = new UserInfo('.profile__title', '.profile__subtitle');
