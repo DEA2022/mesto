@@ -1,10 +1,10 @@
 class Section {
 
-  constructor({items, renderer}, container) {
+  constructor({ items, renderer }, container) {
     this._items = items;
     this._renderer = renderer;
-      this._container = container;
-    }
+    this._container = container;
+  }
 
   rendererElements() {
     this._items.forEach((item) => {
@@ -13,8 +13,8 @@ class Section {
     });
   }
 
-addItem(item) {
-  const cardElement = this._renderer(item);
+  addItem(item) {
+    const cardElement = this._renderer(item);
 
     this._container.prepend(cardElement);
   }
