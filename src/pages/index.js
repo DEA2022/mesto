@@ -25,9 +25,6 @@ const jobInput = formEditProfile.querySelector('.form__field_el_job');
 const cardsContainer = document.querySelector('.photo__grid');
 const cardTemplate = document.querySelector('.card').content;
 
-const cardNameField = formAddCard.querySelector('.form__field_el_place');
-const cardSrcField = formAddCard.querySelector('.form__field_el_webcite');
-
 // экземпляр класса UserInfo
 const instanceUserInfo = new UserInfo('.profile__title', '.profile__subtitle');
 
