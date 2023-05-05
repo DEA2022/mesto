@@ -31,7 +31,7 @@ const instanceUserInfo = new UserInfo('.profile__title', '.profile__subtitle');
 // колбэк сабмита на форму изменения профиля
 const submitEditProfileForm = ([name, job]) => {
   instanceUserInfo.setUserInfo({ name, job });
-  instancePopupEditProfile.closePopup(popupEditProfile);
+  instancePopupEditProfile.closePopup();
 };
 
 // Экземпляр попапа PopupEditProfile
@@ -49,7 +49,7 @@ buttonOpenPopupEditProfile.addEventListener('click', () => {
 // колбэк сабмита на форму добавления новой карточки
 const submitAddNewCardForm = ([name, link]) => {
   section.addItem({name, link});
-  instancePopupAddCard.closePopup(popupAddCard);
+  instancePopupAddCard.closePopup();
 }
 
 // Экземпляр попапа PopupAddCard
@@ -58,7 +58,7 @@ instancePopupAddCard.setEventListeners();
 
 buttonOpenPopupAddCard.addEventListener('click', () => {
   formAddCardValidator.clearInputErrors();
-  instancePopupAddCard.openPopup(popupAddCard);
+  instancePopupAddCard.openPopup();
 });
 
 // Экземпляр попапа PopupViewImg
