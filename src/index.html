@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Проект Место</title>
 </head>
+
 <body class="root">
   <div class="page">
     <header class="header page__header">
@@ -40,14 +42,16 @@
     </footer>
     <div class="popup popup_type_profile">
       <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
         <form action="#" class="form" name="Профиль" novalidate>
-          <h2 class="form__title">Редактировать профиль</h2>
+
           <fieldset class="form__info">
-            <input type="text" class="form__field form__field_el_name" id="form-name" placeholder="Введите имя" minlength="2" maxlength="40" required>
+            <input type="text" class="form__field form__field_el_name" id="form-name" placeholder="Введите имя"
+              minlength="2" maxlength="40" required>
             <span class="form__error form-name-error"></span>
             <input type="text" class="form__field form__field_el_job" id="form-job"
-              placeholder="Введите информацию о себе"  minlength="2" maxlength="200" required>
-              <span class="form__error form-job-error"></span>
+              placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
+            <span class="form__error form-job-error"></span>
           </fieldset>
           <button class="form__submit" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
@@ -61,12 +65,12 @@
         <form action="#" class="form" name="Добавление карточки" novalidate>
           <h2 class="form__title">Новое место</h2>
           <fieldset class="form__info">
-            <input type="text" class="form__field form__field_el_place" id="form-place"
-              placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="form__error form-place-error"></span>
-            <input type="url" class="form__field form__field_el_webcite" id="form-url"
-              placeholder="Ссылка на картинку" required>
-              <span class="form__error form-url-error"></span>
+            <input type="text" class="form__field form__field_el_place" id="form-place" placeholder="Название"
+              minlength="2" maxlength="30" required>
+            <span class="form__error form-place-error"></span>
+            <input type="url" class="form__field form__field_el_webcite" id="form-url" placeholder="Ссылка на картинку"
+              required>
+            <span class="form__error form-url-error"></span>
           </fieldset>
           <button class="form__submit" type="submit" aria-label="Создать">Создать</button>
         </form>
@@ -75,6 +79,19 @@
         </button>
       </div>
     </div>
+
+    <div class="popup popup_type_agreement">
+      <div class="popup__container popup__container_type_agreement">
+
+          <h2 class="form__title">Вы уверены?</h2>
+          <button class="form__submit" type="submit" aria-label="Да">Да</button>
+
+        <button class="popup__close popup__close_add_img" type="button" aria-label="Закрыть">
+
+        </button>
+      </div>
+    </div>
+
     <div class="popup popup_type_image">
       <div class="popup__img-container">
         <figure class="popup__figure">
@@ -95,12 +112,16 @@
         </button>
         <div class="photo__wrap">
           <h2 class="photo__name"></h2>
-          <button class="photo__icon" type="button" aria-label="Лайк">
+          <div class="photo__likes">
+            <button class="photo__icon" type="button" aria-label="Лайк">
 
-          </button>
+            </button>
+            <div class="photo__counter"></div>
+          </div>
         </div>
       </li>
     </template>
   </div>
 </body>
+
 </html>
