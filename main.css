@@ -53,4 +53,5 @@
 .form__field_type_error-line{border-bottom-color:red}
 .form__submit_disabled{background-color:#fff;border:1px solid rgba(0,0,0,.2);color:rgba(0,0,0,.2);cursor:not-allowed}
 .form__error_active{opacity:1;visibility:visible}
-.photo__likes{align-items:center;display:flex;flex-direction:column}.photo__counter{font-size:13px;line-height:1.23;margin-top:3px}.popup__container_type_agreement{align-items:center;display:flex;flex-direction:column;margin-left:48px;max-height:181px}.popup__title{align-self:flex-start;color:#000;display:flex;font-size:24px;font-weight:900;line-height:1.21;margin:34px 0 48px 36px}@media (max-width:690px){.popup__title{font-size:18px;line-height:1.22;padding:25px 0 75px 22px}}
+.photo__likes{align-items:center;display:flex;flex-direction:column}
+.photo__counter{font-size:13px;line-height:1.23;margin-top:3px}.popup__container_type_agreement{align-items:center;display:flex;flex-direction:column;margin-left:48px;max-height:181px}.popup__title{align-self:flex-start;color:#000;display:flex;font-size:24px;font-weight:900;line-height:1.21;margin:34px 0 48px 36px}@media (max-width:690px){.popup__title{font-size:18px;line-height:1.22;padding:25px 0 75px 22px}}
