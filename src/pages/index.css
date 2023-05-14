@@ -54,12 +54,9 @@
 @import url(../blocks/form/__field/_type/form__field_type_error-line.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 @import url(../blocks/form/__error/_active/form__error_active.css);
+@import url(../blocks/photo/__likes/photo__likes.css);
 
-.photo__likes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .photo__counter {
   font-size: 13px;
