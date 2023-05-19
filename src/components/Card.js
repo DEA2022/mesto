@@ -1,8 +1,9 @@
 class Card {
-  constructor(templateSelector, cardData, onClickPhotoCard) {
+  constructor(templateSelector, cardData, onClickPhotoCard, onClickDeleteCard) {
     this._cardElement = this._getTemplate(templateSelector);
     this._cardData = cardData;
     this._onClickPhotoCard = onClickPhotoCard;
+    this._onClickDeleteCard = onClickDeleteCard;
   }
 
   createCardElement() {
@@ -13,6 +14,11 @@ class Card {
     photoItemElement.alt = this._cardData.name;
 
     return this._cardElement;
+  }
+
+  deleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _getTemplate(templateSelector) {
@@ -26,7 +32,7 @@ class Card {
       this._toogleLike();
     });
     this._cardElement.querySelector('.photo__trash').addEventListener('click', () => {
-      this._deleteCard();
+      this._handleDeleteCard(this);
     });
     this._cardElement.querySelector('.photo__item').addEventListener('click', () => {
       this._onClickPhotoCard(this._cardData.name, this._cardData.link);
@@ -37,9 +43,8 @@ class Card {
     this._cardElement.querySelector('.photo__icon').classList.toggle('photo__icon_active');
   }
 
-  _deleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+  _handleDeleteCard() {
+    this._onClickDeleteCard(this);
   }
 }
 
