@@ -13,14 +13,14 @@ export default class PopupRemoveCard extends Popup {
 
     this._formIntoPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      console.log(this._cardElement)
-      this._callbackSubmit(this._cardElement);
+      this._callbackSubmit({card: this._cardElement, cardId: this._cardId});
 
     });
   }
 
-  openPopup = (cardElement) => {
+  openPopup = ({card , cardId}) => {
     super.openPopup();
-    this._cardElement = cardElement;
+    this._cardElement = card;
+    this._cardId = cardId;
   }
 }

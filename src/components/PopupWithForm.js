@@ -6,6 +6,7 @@ class PopupWithForm extends Popup {
     this._callbackSubmit = callbackSubmit;
     this._currentPopup = document.querySelector(popup);
     this._formIntoPopup = this._currentPopup.querySelector('.form');
+    this.buttonSubmit = this._formIntoPopup.querySelector('.form__submit');
   }
 
   _getInputValues() {
@@ -19,6 +20,7 @@ class PopupWithForm extends Popup {
 
     this._formIntoPopup.addEventListener('submit', (evt) => {
       evt.preventDefault();
+      this.buttonSubmit.textContent = "Сохранение..."
       this._callbackSubmit(this._getInputValues());
     });
   }
