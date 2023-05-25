@@ -4,8 +4,7 @@ export default class PopupRemoveCard extends Popup {
   constructor(popupSelector, callbackSubmit) {
     super(popupSelector);
     this._callbackSubmit = callbackSubmit;
-    this._currentPopup = document.querySelector(popupSelector);
-    this._formIntoPopup = this._currentPopup.querySelector('.form');
+    this._formIntoPopup = this._popup.querySelector('.form');
   }
 
   setEventListeners() {
