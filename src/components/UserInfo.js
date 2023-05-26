@@ -14,11 +14,15 @@ class UserInfo {
 
   }
 
-  setUserInfo({ name, job, id, avatar }) {
+  setUserInfo({ name, job, avatar, id }) {
     this._nameElement.textContent = name;
     this._jobElement.textContent = job;
-    this._id = id;
     this._avatarElement.src = avatar;
+    this._id = id;
+  }
+
+  getUserId() {
+    return this._id;
   }
 }
 

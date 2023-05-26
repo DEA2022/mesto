@@ -47,8 +47,8 @@ export default class Api {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: data.name,
-        link: data.link,
+        name: data.place,
+        link: data.url,
       })
     })
     .then(this._getResponseData);
@@ -90,7 +90,7 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.avatar
+        avatar: data.src
       })
     })
     .then(this._getResponseData);

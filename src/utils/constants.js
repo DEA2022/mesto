@@ -7,6 +7,3 @@ export const validationObject = {
   errorClass: 'form__error_active'
 }
 
-export const defaultTextSubmitEditProfile = 'Сохранить';
-export const defaultTextSubmitChangeAvatar = 'Сохранить';
-export const defaultTextSubmitAddCard = 'Создать';

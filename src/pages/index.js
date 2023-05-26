@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupRemoveCard from '../components/PopupRemoveCard.js';
 import UserInfo from '../components/UserInfo.js';
-import { validationObject, defaultTextSubmitEditProfile, defaultTextSubmitChangeAvatar, defaultTextSubmitAddCard } from '../utils/constants.js';
+import { validationObject } from '../utils/constants.js';
 import Api from '../components/Api.js';
 
 const popupEditProfile = document.querySelector('.popup_type_profile');
@@ -28,7 +28,6 @@ const jobInput = formEditProfile.querySelector('.form__field_el_job');
 
 const cardsContainer = document.querySelector('.photo__grid');
 const cardTemplate = document.querySelector('.card').content;
-const photoFromAvatar = document.querySelector('.profile__photo');
 
 // Экземпляр Api
 const api = new Api({
@@ -43,17 +42,18 @@ const api = new Api({
 const instanceUserInfo = new UserInfo('.profile__title', '.profile__subtitle', '.profile__photo');
 
 // колбэк сабмита на форму изменения профиля
-const submitEditProfileForm = ([name, job]) => {
-  api.setUserInfo({ name, job })
-    .then(res => {
-      instanceUserInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar });
-      instancePopupEditProfile.closePopup();
-    })
-    .catch(errorMessage => {
-      console.error(`Операция по обновлению профиля завершилась ошибкой ${errorMessage}`);
-    })
-    .finally(() => instancePopupEditProfile.buttonSubmit.textContent = defaultTextSubmitEditProfile)
-};
+const submitEditProfileForm = (data) => {
+    api.setUserInfo(data)
+      .then(res => {
+        instanceUserInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar, id: res._id });
+        instancePopupEditProfile.closePopup();
+      })
+      .catch(errorMessage => {
+        console.error(`Операция по обновлению профиля завершилась ошибкой ${errorMessage}`);
+      })
+      .finally(() => instancePopupEditProfile.setDefaultTextButtonSubmit())
+  };
+
 
 // Экземпляр попапа PopupEditProfile
 const instancePopupEditProfile = new PopupWithForm('.popup_type_profile', submitEditProfileForm);
@@ -68,28 +68,16 @@ buttonOpenPopupEditProfile.addEventListener('click', () => {
 });
 
 // колбэк сабмита на форму добавления новой карточки
-const submitAddNewCardForm = ([name, link]) => {
-  api.createNewCard({ name, link })
-    .then(res => {
-
-      const cardItem = {
-        likes: res.likes,
-        name: res.name,
-        link: res.link,
-        owner: {
-          _id: res.owner._id
-        },
-        _id: res._id,
-        handleLikeCard
-      }
-
-      section.addItem(createNewCardElement(cardItem));
-      instancePopupAddCard.closePopup();
-    })
-    .catch(errorMessage => {
-      console.error(`Операция по добавлению новой карточки завершилась ошибкой ${errorMessage}`);
-    })
-    .finally(() => instancePopupAddCard.buttonSubmit.textContent = defaultTextSubmitAddCard)
+const submitAddNewCardForm = (CardData) => {
+  api.createNewCard(CardData)
+  .then((newCard)=>{
+    section.addItem(createNewCardElement(newCard));
+    instancePopupAddCard.closePopup();
+  })
+  .catch(errorMessage => {
+    console.error(`Операция не выполнена ${errorMessage}`)
+  })
+  .finally(() => instancePopupAddCard.setDefaultTextButtonSubmit());
 }
 
 // Экземпляр попапа PopupAddCard
@@ -104,16 +92,16 @@ buttonOpenPopupAddCard.addEventListener('click', () => {
 
 // колбэк сабмита на форму обновления аватара
 const submitChangeAvatar = (data) => {
-  api.updateUserAvatar({ avatar: data[0] })
-    .then(data => {
-      photoFromAvatar.src = data.avatar
+  api.updateUserAvatar(data)
+    .then(res => {
+      instanceUserInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar, id: res._id });
       instancePopupChangeAvatar.closePopup();
     })
     .catch(errorMessage => {
       console.error(`Операция смены аватара завершилась ошибкой ${errorMessage}`)
     })
     .finally(() => {
-      instancePopupChangeAvatar.buttonSubmit.textContent = defaultTextSubmitChangeAvatar;
+      instancePopupChangeAvatar.setDefaultTextButtonSubmit();
     })
 }
 
@@ -163,13 +151,13 @@ const onClickPhotoCard = (name, link) => {
 
 //Создание экземпляра карточки
 const createNewCardElement = (item) => {
-  const card = new Card(cardTemplate, item, onClickPhotoCard, instancePopupRemoveCard.openPopup, instanceUserInfo._id, handleLikeCard)
+  const card = new Card(cardTemplate, item, onClickPhotoCard, instancePopupRemoveCard.openPopup, instanceUserInfo.getUserId(), handleLikeCard)
 
   const cardElement = card.createCardElement();
 
   return cardElement;
 }
-
+// Лайки
 const handleLikeCard = (card, itemLike, cardId) => {
   if (itemLike.classList.contains('photo__icon_active')) {
     api.deleteLike(cardId)
@@ -201,16 +189,14 @@ const rendererItems = (item) => {
 // добавление массива карточек
 const section = new Section(rendererItems, cardsContainer);
 
-//Получение информации о пользователе с сервера
-api.getUserInfo().then(res => {
-  instanceUserInfo.setUserInfo({ name: res.name, job: res.about, id: res._id, avatar: res.avatar });
-  return res;
+//Получение информации о пользователе и массива карточек с сервера
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(([userInfo, initialCards])=>{
+  console.log(userInfo)
+  instanceUserInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, avatar: userInfo.avatar, id: userInfo._id });
+  section.rendererElements(initialCards.reverse());
 })
-
-//Получение массива карточек с сервера
-api.getInitialCards().then(res => {
-  section.rendererElements(res.reverse());
+.catch(errorMessage => {
+  console.error(`Операция не выполнена ${errorMessage}`)
 })
-
-
 
