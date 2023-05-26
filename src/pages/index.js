@@ -192,7 +192,6 @@ const section = new Section(rendererItems, cardsContainer);
 //Получение информации о пользователе и массива карточек с сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then(([userInfo, initialCards])=>{
-  console.log(userInfo)
   instanceUserInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, avatar: userInfo.avatar, id: userInfo._id });
   section.rendererElements(initialCards.reverse());
 })
